@@ -1,6 +1,6 @@
+import groovy.transform.ToString
 
-
-@groovy.transform.ToString()
+@ToString(includeNames = true, includeSuperProperties = true )
 class Empresa extends Pessoa {
 
     String cnpj
@@ -12,5 +12,12 @@ class Empresa extends Pessoa {
         this.cnpj = cnpj
         this.pais = pais
         this.competencia = competencia
+    }
+
+
+    @Override
+    public String toString() {
+        return "[" + nome + ", " + cnpj + ", " + email + ", " + cep + ", " +
+                estado + ", " + pais + ", " + descricao + ", " + competencia + "]"
     }
 }

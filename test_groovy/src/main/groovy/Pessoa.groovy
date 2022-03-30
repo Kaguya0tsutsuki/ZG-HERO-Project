@@ -1,5 +1,3 @@
-
-
 @groovy.transform.ToString()
 class Pessoa {
     String nome

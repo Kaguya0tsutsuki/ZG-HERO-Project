@@ -1,93 +1,154 @@
+
 class Main {
 
     static void main(String[] args) {
+        menu()
 
-        System.in.withReader {
-            print "Digite :\n" + "1 - Criar Candidato\n" + "2 - Criar Empresa.\n"
-            def opcao = it.readLine()
+//        def f = new File('Candidato.txt')
+//        f.text = ''
+    }
 
+    static menuOpcao(def opcao){
+        switch (opcao) {
+            case "1":
 
-            switch (opcao) {
-                case "1":
+                print "Nome: "
+                def nome = System.in.newReader().readLine()
+                print "CPF: "
+                def cpf = System.in.newReader().readLine()
+                print "Idade: "
+                def idade = System.in.newReader().readLine()
+                print "Email: "
+                def email = System.in.newReader().readLine()
+                print "Estado: "
+                def estado = System.in.newReader().readLine()
+                print "CEP: "
+                def cep = System.in.newReader().readLine()
+                print "Descrição: "
+                def descricao = System.in.newReader().readLine()
 
-                    print "Nome: "
-                    def nome = it.readLine()
-                    print "CPF: "
-                    def cpf = it.readLine()
-                    print "Idade: "
-                    def idade = it.readLine()
-                    print "Email: "
-                    def email = it.readLine()
-                    print "Estado: "
-                    def estado = it.readLine()
-                    print "CEP: "
-                    def cep = it.readLine()
-                    print "Descrição: "
-                    def descricao = it.readLine()
+                Candidato candidato = new Candidato(nome, cpf, idade, email, estado, cep, descricao)
 
-                    Candidato candidato = new Candidato(nome, cpf, idade, email, estado, cep, descricao)
+                criarCandidato(candidato)
+                break
 
-                    criarCandidato(candidato)
-                    break
+            case "2":
 
-                case "2":
+                print "Nome: "
+                def nome = System.in.newReader().readLine()
+                print "CNPJ: "
+                def cnpj = System.in.newReader().readLine()
+                print "Email: "
+                def email = System.in.newReader().readLine()
+                print "País: "
+                def pais = System.in.newReader().readLine()
+                print "Estado: "
+                def estado = System.in.newReader().readLine()
+                print "CEP: "
+                def cep = System.in.newReader().readLine()
+                print "Descrição: "
+                def descricao = System.in.newReader().readLine()
 
-                    print "Nome: "
-                    def nome = it.readLine()
-                    print "CNPJ: "
-                    def cnpj = it.readLine()
-                    print "Email: "
-                    def email = it.readLine()
-                    print "País: "
-                    def pais = it.readLine()
-                    print "Estado: "
-                    def estado = it.readLine()
-                    print "CEP: "
-                    def cep = it.readLine()
-                    print "Descrição: "
-                    def descricao = it.readLine()
+                Empresa empresa = new Empresa(nome, cnpj, email, pais, estado, cep, descricao)
 
-                    Empresa empresa = new Empresa(nome, cnpj, email, pais, estado, cep, descricao)
+                criarEmpresa(empresa)
+                break
 
-                    criarEmpresa(empresa)
-                    break
+            case "3":
+                printCandidato()
+                break
 
-                default: println("opção invalida")
-            }
+            case "4":
+                printEmpresa()
+                break
 
+            default: println("opção invalida")
         }
-
-
-//        new File('Candidato.txt').eachLine { line ->
-//            println line
-//        }
-//
-//        new File('Candidato.txt').eachLine { line, nb ->
-//            println "Line $nb: $line"
-//        }
-//
-//        def list = new File('Candidato.txt').collect { it }
-//        println list
-//
-//        def array = new File('Candidato.txt') as String[]
-//        println array
-
     }
 
     static criarCandidato(candidato){
 
-        def writer = new File('Candidato.txt').newWriter()
-        candidato {line ->
-            writer.writeLine line
+        def f = new File("Candidato.txt")
+        f.append(candidato.toString())
+
+        println "Candidato Criado com Sucesso!\n"
+
+        menu()
+
+    }
+
+    static criarEmpresa(empresa){
+
+        def f = new File('Empresa.txt')
+        f.append(empresa.toString() + '\n')
+
+        println "Empresa Criada com Sucesso!\n"
+
+        menu()
+
+    }
+
+    static printCandidato(){
+
+        File file = new File('Candidato.txt')
+
+        def line, i = 0, y = 1
+        def list = []
+
+        file.withReader { reader ->
+            while ((line = reader.readLine()) != null && (i != 8)) {
+                list.add(line)
+                if(list.size() == 8){
+                    println "\nCandidato " + y + ":" + '\n' + "Nome: " + list[0] + '\n' +
+                            "CPF: " + list[1] + '\n' + "Idade: " + list[2] + '\n' +
+                            "Email: " + list[3] + '\n' + "Estado: " + list[4] + '\n' +
+                            "CEP: " + list[5] + '\n' + "Descrição: " + list[6] + '\n' +
+                            "Competencia: " + list[7]
+                    i = 0
+                    y++
+                    list = []
+                }else {
+                    i++
+                }
+            }
         }
 
     }
 
-    static criarEmpresa(empresa ){
-        def writer = new File('Empresa.txt').newWriter()
-        empresa { line ->
-            writer.writeLine line
+    static printEmpresa(){
+
+        File file = new File('Empresa.txt')
+
+        def line, i = 0, y = 1
+        def list = []
+
+        file.withReader { reader ->
+            while ((line = reader.readLine()) != null && (i != 8)) {
+                list.add(line)
+                if(list.size() == 8){
+                    println "\nEmpresa " + y + ":" + '\n' + "Nome: " + list[0] + '\n' +
+                            "CNPJ: " + list[1] + '\n' + "Email: " + list[2] + '\n' +
+                            "CEP: " + list[3] + '\n' + "Estado: " + list[4] + '\n' +
+                            "País: " + list[5] + '\n' + "Descrição: " + list[6] + '\n' +
+                            "Competencia: " + list[7]
+                    i = 0
+                    y++
+                    list = []
+                }else {
+                    i++
+                }
+            }
         }
+
+    }
+
+    static menu(){
+
+        print "Digite :\n" + "1 - Criar Candidato.\n" + "2 - Criar Empresa.\n" + "3 - Imprimir Candidato.\n" + "4 - Imprimir Empresa.\n"
+        def opcao = System.in.newReader().readLine()
+
+        menuOpcao(opcao)
+
     }
 
 }
