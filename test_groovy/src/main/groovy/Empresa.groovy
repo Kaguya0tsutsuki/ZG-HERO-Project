@@ -17,7 +17,7 @@ class Empresa extends Pessoa {
 
     @Override
     public String toString() {
-        return "[" + nome + ", " + cnpj + ", " + email + ", " + cep + ", " +
-                estado + ", " + pais + ", " + descricao + ", " + competencia + "]"
+        return nome + "\n" + cnpj + "\n" + email + "\n" + cep + "\n" +
+                estado + "\n" + pais + "\n" + descricao + "\n" + competencia + "\n"
     }
 }
