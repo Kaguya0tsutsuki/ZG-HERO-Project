@@ -10,5 +10,5 @@
 - Ir para a pasta src/test/groovy
 - Executar a pasta Chamada 'Test'
 
-Fiz o programa utilizando o maven para testes, se entrar nos testes
+Programa utilizando o maven para testes, se entrar nos testes
 poderá executar os testes separadamente, basta executar um def por vez.
