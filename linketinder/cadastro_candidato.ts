@@ -23,73 +23,73 @@ let candidatos = [];
 function criarCandidato(this: HTMLElement, ev: Event) {
   ev.preventDefault();
 
-  let validaNome = new RegExp(/[A-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ][a-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ]/),
-    testNome = validaNome.test(nome.value);
+  let validaRNome = new RegExp(/[A-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ][a-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ]/),
+    testarNome = validaRNome.test(nome.value);
   if(nome.value === ""){
     nome.value = ""
     alert("Nome não Informado!")
     return 
-  }else if(testNome === false){
+  }else if(testarNome === false){
     nome.value = ""
     alert("Nome Inválido!")
     return 
   }
 
-  let validaCPF = new RegExp(/^[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}$/),
-    testCPF = validaCPF.test(cpf.value);
+  let validarCPF = new RegExp(/^[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}$/),
+    testarCPF = validarCPF.test(cpf.value);
   if(cpf.value === ""){
     cpf.value = ""
     alert("CPF não Informado!")
     return 
-  }else if(testCPF === false){
+  }else if(testarCPF === false){
     cpf.value = ""
     alert("CPF Inválido! Utilizar XXX.XXX.XXX-XX")
     return 
   }
 
-  let validaIdade = new RegExp(/^[0-9]{2}$/),
-    testIdade = validaIdade.test(idade.value);
+  let validarIdade = new RegExp(/^[0-9]{2}$/),
+    testarIdade = validarIdade.test(idade.value);
   if(idade.value === ""){
     idade.value = ""
     alert("Idade não Informado!")
     return 
-  }else if(testIdade === false){
+  }else if(testarIdade === false){
     idade.value = ""
     alert("Idade Inválido! Utilizar somente números")
     return 
   }
 
-  let validaEmail = new RegExp(/[a-zA-Z0-9_]+@[a-zA-Z0-9_]+\.[a-zA-Z0-9_]+/),
-    testEmail = validaEmail.test(email.value);
+  let validarEmail = new RegExp(/[a-zA-Z0-9_]+@[a-zA-Z0-9_]+\.[a-zA-Z0-9_]+/),
+    testarEmail = validarEmail.test(email.value);
   if(email.value === ""){
     email.value = ""
     alert("Email não Informado!")
     return 
-  }else if(testEmail === false){
+  }else if(testarEmail === false){
     email.value = ""
     alert("Email Inválido! Utilizar email@example.com")
     return 
   }
 
-  let validaEstado = new RegExp(/[A-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ][a-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ]/),
-    testEstado = validaEstado.test(estado.value);
+  let validarEstado = new RegExp(/[A-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ][a-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ]/),
+    testarEstado = validarEstado.test(estado.value);
   if(estado.value === ""){
     estado.value = ""
     alert("Estado não Informado!")
     return 
-  }else if(testEstado === false){
+  }else if(testarEstado === false){
     estado.value = ""
     alert("Estado Inválido!")
     return 
   }
 
-  let validaCEP = new RegExp(/^[0-9]{5}-[0-9]{3}$/),
-    testCEP = validaCEP.test(cep.value);
+  let validarCEP = new RegExp(/^[0-9]{5}-[0-9]{3}$/),
+    testarCEP = validarCEP.test(cep.value);
   if(cep.value === ""){
     cep.value = ""
     alert("CEP não Informado!")
     return 
-  }else if(testCEP === false){
+  }else if(testarCEP === false){
     cep.value = ""
     alert("CEP Inválido! Utilizar XXXXX-XXX")
     return 
@@ -101,8 +101,8 @@ function criarCandidato(this: HTMLElement, ev: Event) {
     return 
   }
 
-  let validaSenha = new RegExp(/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!#@%&]).{6,15}$/),
-    testSenha = validaSenha.test(senha.value);
+  let validarSenha = new RegExp(/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!#@%&]).{6,15}$/),
+    testarSenha = validarSenha.test(senha.value);
   if(senha.value === ""){
     senha.value = ""
     alert("Senha não Informada!")
@@ -110,7 +110,7 @@ function criarCandidato(this: HTMLElement, ev: Event) {
   }else if(confirmarSenha.value === ""){
     alert("Confirmação de senha não Informada!")
     return
-  }else if(testSenha === false){
+  }else if(testarSenha === false){
     senha.value = ""
     alert("Senha Inválida!")
     return 

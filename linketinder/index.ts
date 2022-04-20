@@ -1,9 +1,9 @@
 const botao = document.getElementById("logar");
-botao?.addEventListener("click", validar);
+botao?.addEventListener("click", validarLogin);
 
 const login = document.getElementById("login") as HTMLInputElement;
 
-function validar(this: HTMLElement, ev: Event) {
+function validarLogin(this: HTMLElement, ev: Event) {
     ev.preventDefault();
     if (login.value.length>14 ){
         window.location.replace("empresa.html");
