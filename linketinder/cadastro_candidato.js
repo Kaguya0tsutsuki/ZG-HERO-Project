@@ -1,120 +1,187 @@
-var botaoSalvar = document.getElementById("salvar");
-botaoSalvar === null || botaoSalvar === void 0 ? void 0 : botaoSalvar.addEventListener("click", criarCandidato);
-var nome = document.getElementById("nome");
-var cpf = document.getElementById("cpf");
-var idade = document.getElementById("idade");
-var email = document.getElementById("email");
-var estado = document.getElementById("estado");
-var cep = document.getElementById("cep");
-var descricao = document.getElementById("descricao");
-var python = document.getElementById("python");
-var java = document.getElementById("java");
-var groovy = document.getElementById("groovy");
-var c = document.getElementById("c");
-var js = document.getElementById("js");
-var senha = document.getElementById("senha");
-var confirmarSenha = document.getElementById("confirmar_senha");
-var candidatos = [];
+"use strict";
+const botaoSalvarCandidato = document.getElementById("salvar");
+botaoSalvarCandidato === null || botaoSalvarCandidato === void 0 ? void 0 : botaoSalvarCandidato.addEventListener("click", criarCandidato);
+const nomeCandidato = document.getElementById("nome");
+const cpfCandidato = document.getElementById("cpf");
+const idadeCandidato = document.getElementById("idade");
+const emailCandidato = document.getElementById("email");
+const estadoCandidato = document.getElementById("estado");
+const cepCandidato = document.getElementById("cep");
+const descricaoCandidato = document.getElementById("descricao");
+const pythonCandidato = document.getElementById("python");
+const javaCandidato = document.getElementById("java");
+const groovyCandidato = document.getElementById("groovy");
+const cCandidato = document.getElementById("c");
+const jsCandidato = document.getElementById("js");
+const senhaCandidato = document.getElementById("senha");
+const confirmarSenhaCandidato = document.getElementById("confirmar_senha");
+let candidatos = [];
 function criarCandidato(ev) {
     ev.preventDefault();
-    var validaNome = new RegExp(/[A-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ][a-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ]/), testNome = validaNome.test(nome.value);
-    if (nome.value === "") {
-        nome.value = "";
+    if (validarNomeCandidato() === false) {
+        return;
+    }
+    else if (validarCPFCandidato() === false) {
+        return;
+    }
+    else if (validarIdadeCandidato() === false) {
+        return;
+    }
+    else if (validarEmailCandidato() === false) {
+        return;
+    }
+    else if (validarEstadoCandidato() === false) {
+        return;
+    }
+    else if (validarCEPCandidato() === false) {
+        return;
+    }
+    else if (validarDescricaoCandidato() === false) {
+        return;
+    }
+    else if (validarSenhaCandidato() === false) {
+        return;
+    }
+    let candidato = new Candidato(nomeCandidato.value, cpfCandidato.value, idadeCandidato.value, emailCandidato.value, estadoCandidato.value, cepCandidato.value, descricaoCandidato.value, [pythonCandidato.checked, javaCandidato.checked,
+        groovyCandidato.checked, cCandidato.checked, jsCandidato.checked], senhaCandidato.value);
+    candidatos.push(candidato);
+    alert("Candidato criado com sucesso!");
+    console.log(candidatos);
+    limparDadosCandidato();
+}
+function limparDadosCandidato() {
+    nomeCandidato.value = "";
+    cpfCandidato.value = "";
+    emailCandidato.value = "";
+    idadeCandidato.value = "";
+    estadoCandidato.value = "";
+    cepCandidato.value = "";
+    descricaoCandidato.value = "";
+    pythonCandidato.checked = false;
+    javaCandidato.checked = false;
+    cCandidato.checked = false;
+    groovyCandidato.checked = false;
+    jsCandidato.checked = false;
+    senhaCandidato.value = "";
+    confirmarSenhaCandidato.value = "";
+}
+function validarNomeCandidato() {
+    let validaRNome = new RegExp(/[A-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ][a-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ]/), testarNome = validaRNome.test(nomeCandidato.value);
+    if (nomeCandidato.value === "") {
         alert("Nome não Informado!");
-        return;
+        return false;
     }
-    else if (testNome === false) {
-        nome.value = "";
+    else if (testarNome === false) {
+        nomeCandidato.value = "";
         alert("Nome Inválido!");
-        return;
+        return false;
     }
-    var validaCPF = new RegExp(/^[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}$/), testCPF = validaCPF.test(cpf.value);
-    if (cpf.value === "") {
-        cpf.value = "";
+    return true;
+}
+function validarCPFCandidato() {
+    let validarCPF = new RegExp(/^[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}$/), testarCPF = validarCPF.test(cpfCandidato.value);
+    if (cpfCandidato.value === "") {
         alert("CPF não Informado!");
-        return;
+        return false;
     }
-    else if (testCPF === false) {
-        cpf.value = "";
+    else if (testarCPF === false) {
+        cpfCandidato.value = "";
         alert("CPF Inválido! Utilizar XXX.XXX.XXX-XX");
-        return;
+        return false;
     }
-    var validaIdade = new RegExp(/^[0-9]{2}$/), testIdade = validaIdade.test(idade.value);
-    if (idade.value === "") {
-        idade.value = "";
-        alert("Idade não Informado!");
-        return;
+    return true;
+}
+function validarIdadeCandidato() {
+    let validarIdade = new RegExp(/^[0-9]$/), testarIdade = validarIdade.test(idadeCandidato.value);
+    if (idadeCandidato.value === "") {
+        alert("Idade não Informada!");
+        return false;
     }
-    else if (testIdade === false) {
-        idade.value = "";
-        alert("Idade Inválido! Utilizar somente números");
-        return;
-    }
-    var validaEmail = new RegExp(/[a-zA-Z0-9_]+@[a-zA-Z0-9_]+\.[a-zA-Z0-9_]+/), testEmail = validaEmail.test(email.value);
-    if (email.value === "") {
-        email.value = "";
+    return true;
+}
+function validarEmailCandidato() {
+    let validarEmail = new RegExp(/[a-zA-Z0-9_]+@[a-zA-Z0-9_]+\.[a-zA-Z0-9_]+/), testarEmail = validarEmail.test(emailCandidato.value);
+    if (emailCandidato.value === "") {
         alert("Email não Informado!");
-        return;
+        return false;
     }
-    else if (testEmail === false) {
-        email.value = "";
+    else if (testarEmail === false) {
+        emailCandidato.value = "";
         alert("Email Inválido! Utilizar email@example.com");
-        return;
+        return false;
     }
-    var validaEstado = new RegExp(/[A-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ][a-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ]/), testEstado = validaEstado.test(estado.value);
-    if (estado.value === "") {
-        estado.value = "";
+    return true;
+}
+function validarEstadoCandidato() {
+    let validarEstado = new RegExp(/[A-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ][a-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ]/), testarEstado = validarEstado.test(estadoCandidato.value);
+    if (estadoCandidato.value === "") {
         alert("Estado não Informado!");
-        return;
+        return false;
     }
-    else if (testEstado === false) {
-        estado.value = "";
+    else if (testarEstado === false) {
+        estadoCandidato.value = "";
         alert("Estado Inválido!");
-        return;
+        return false;
     }
-    var validaCEP = new RegExp(/^[0-9]{5}-[0-9]{3}$/), testCEP = validaCEP.test(cep.value);
-    if (cep.value === "") {
-        cep.value = "";
+    return true;
+}
+function validarCEPCandidato() {
+    let validarCEP = new RegExp(/^[0-9]{5}-[0-9]{3}$/), testarCEP = validarCEP.test(cepCandidato.value);
+    if (cepCandidato.value === "") {
         alert("CEP não Informado!");
-        return;
+        return false;
     }
-    else if (testCEP === false) {
-        cep.value = "";
+    else if (testarCEP === false) {
+        cepCandidato.value = "";
         alert("CEP Inválido! Utilizar XXXXX-XXX");
-        return;
+        return false;
     }
-    if (descricao.value === "") {
-        descricao.value = "";
+    return true;
+}
+function validarDescricaoCandidato() {
+    if (descricaoCandidato.value === "") {
         alert("Descrição não Informada!");
-        return;
+        return false;
     }
-    var validaSenha = new RegExp(/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!#@%&]).{6,15}$/), testSenha = validaSenha.test(senha.value);
-    if (senha.value === "") {
-        senha.value = "";
+    return true;
+}
+function validarSenhaCandidato() {
+    let validarSenha = new RegExp(/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!#@%&]).{6,15}$/), testarSenha = validarSenha.test(senhaCandidato.value);
+    if (senhaCandidato.value === "") {
         alert("Senha não Informada!");
-        return;
+        return false;
     }
-    else if (confirmarSenha.value === "") {
+    else if (confirmarSenhaCandidato.value === "") {
         alert("Confirmação de senha não Informada!");
-        return;
+        return false;
     }
-    else if (testSenha === false) {
-        senha.value = "";
+    else if (testarSenha === false) {
+        senhaCandidato.value = "";
         alert("Senha Inválida!");
-        return;
+        return false;
     }
-    if (confirmarSenha.value === "") {
-        confirmarSenha.value = "";
+    if (confirmarSenhaCandidato.value === "") {
         alert("Confirmação de senha não Informada!");
-        return;
+        return false;
     }
-    else if (senha.value != confirmarSenha.value) {
-        senha.value = "";
-        confirmarSenha.value = "";
+    else if (senhaCandidato.value != confirmarSenhaCandidato.value) {
+        senhaCandidato.value = "";
+        confirmarSenhaCandidato.value = "";
         alert("As senhas não são semelhantes!");
-        return;
+        return false;
     }
-    candidatos.push([nome.value, cpf.value, idade.value, email.value, estado.value, cep.value, descricao.value,
-        python.checked, java.checked, groovy.checked, c.checked, js.checked, senha.value]);
-    console.log(candidatos.toString());
+    return true;
+}
+class Candidato {
+    constructor(nome, cpf, idade, email, estado, cep, descricao, competencia, senha) {
+        this.cpf = cpf;
+        this.idade = idade;
+        this.competencia = competencia;
+        this.nome = nome;
+        this.email = email;
+        this.estado = estado;
+        this.cep = cep;
+        this.descricao = descricao;
+        this.senha = senha;
+    }
 }

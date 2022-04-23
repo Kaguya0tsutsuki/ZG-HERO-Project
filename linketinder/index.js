@@ -1,8 +1,8 @@
 "use strict";
-const botaoLogar = document.getElementById("logar");
-botaoLogar === null || botaoLogar === void 0 ? void 0 : botaoLogar.addEventListener("click", validar);
+const botao = document.getElementById("logar");
+botao === null || botao === void 0 ? void 0 : botao.addEventListener("click", validarLogin);
 const login = document.getElementById("login");
-function validar(ev) {
+function validarLogin(ev) {
     ev.preventDefault();
     if (login.value.length > 14) {
         window.location.replace("empresa.html");
