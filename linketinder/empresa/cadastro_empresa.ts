@@ -1,3 +1,5 @@
+import { Empresa } from "./empresa";
+
 const botaoSalvarEmpresa = document.getElementById("salvar");
 botaoSalvarEmpresa?.addEventListener("click", criarEmpresa);
 
@@ -201,30 +203,4 @@ function limparDadosEmpresa(){
   jsEmpresa.checked = false
   senhaEmpresa.value = ""
   confirmarSenhaEmpresa.value = ""
-}
-
-class Empresa{
-
-  cnpj: string
-  pais: string
-  competencia: any[]
-  nome: string
-  email: string
-  estado: string
-  cep: string
-  descricao: string
-  senha: string
-
-  constructor(nome: string, cnpj: string, email: string, pais: string, estado: string, cep: string, descricao: string, competencia: any[], senha: string) {
-      this.cnpj = cnpj
-      this.pais = pais
-      this.competencia = competencia
-      this.nome = nome
-      this.email = email
-      this.estado = estado
-      this.cep = cep
-      this.descricao = descricao
-      this.senha = senha
-  }
-
 }
