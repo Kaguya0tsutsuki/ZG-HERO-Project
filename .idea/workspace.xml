@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="99a0dc27-2b3f-495b-a352-8678e55d1578" name="Changes" comment="" />
+    <list default="true" id="99a0dc27-2b3f-495b-a352-8678e55d1578" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/linketinder/candidato/cadastro_candidato.js" beforeDir="false" afterPath="$PROJECT_DIR$/linketinder/candidato/cadastro_candidato.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linketinder/candidato/cadastro_candidato.ts" beforeDir="false" afterPath="$PROJECT_DIR$/linketinder/candidato/cadastro_candidato.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linketinder/candidato/candidato.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/linketinder/candidato/candidato.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/linketinder/empresa/cadastro_empresa.js" beforeDir="false" afterPath="$PROJECT_DIR$/linketinder/empresa/cadastro_empresa.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linketinder/empresa/cadastro_empresa.ts" beforeDir="false" afterPath="$PROJECT_DIR$/linketinder/empresa/cadastro_empresa.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linketinder/empresa/empresa.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/linketinder/empresa/empresa.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/linketinder/frontend/cadastro-candidato.html" beforeDir="false" afterPath="$PROJECT_DIR$/linketinder/frontend/cadastro-candidato.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linketinder/frontend/cadastro-empresa.html" beforeDir="false" afterPath="$PROJECT_DIR$/linketinder/frontend/cadastro-empresa.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linketinder/frontend/candidato.html" beforeDir="false" afterPath="$PROJECT_DIR$/linketinder/frontend/candidato.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linketinder/frontend/empresa.html" beforeDir="false" afterPath="$PROJECT_DIR$/linketinder/frontend/empresa.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linketinder/frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/linketinder/frontend/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linketinder/pessoa/pessoa.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/linketinder/pessoa/pessoa.ts" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,13 +34,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ZG-Introdutorio" />
-    <property name="nodejs_package_manager_path" value="npm" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/kaguya/Documentos/ZG-HERO-Project",
+    "ts.external.directory.path": "/home/kaguya/Documentos/ZG-HERO-Project/linketinder/node_modules/typescript/lib"
+  }
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -39,6 +57,7 @@
       <workItem from="1649629753996" duration="13000" />
       <workItem from="1649629775732" duration="23000" />
       <workItem from="1649697009973" duration="11000" />
+      <workItem from="1652393792665" duration="747000" />
     </task>
     <servers />
   </component>

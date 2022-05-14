@@ -1,6 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const candidato_1 = require("./candidato");
 const botaoSalvarCandidato = document.getElementById("salvar");
 botaoSalvarCandidato === null || botaoSalvarCandidato === void 0 ? void 0 : botaoSalvarCandidato.addEventListener("click", criarCandidato);
 const nomeCandidato = document.getElementById("nome");
@@ -44,11 +42,11 @@ function criarCandidato(ev) {
     else if (validarSenhaCandidato() === false) {
         return;
     }
-    let candidato = new candidato_1.Candidato(nomeCandidato.value, cpfCandidato.value, idadeCandidato.value, emailCandidato.value, estadoCandidato.value, cepCandidato.value, descricaoCandidato.value, [pythonCandidato.checked, javaCandidato.checked,
+    let candidato = new Candidato(nomeCandidato.value, cpfCandidato.value, idadeCandidato.value, emailCandidato.value, estadoCandidato.value, cepCandidato.value, descricaoCandidato.value, [pythonCandidato.checked, javaCandidato.checked,
         groovyCandidato.checked, cCandidato.checked, jsCandidato.checked], senhaCandidato.value);
     candidatos.push(candidato);
     alert("Candidato criado com sucesso!");
-    console.log(candidatos);
+    console.log(candidato);
     limparDadosCandidato();
 }
 function limparDadosCandidato() {
@@ -173,4 +171,17 @@ function validarSenhaCandidato() {
         return false;
     }
     return true;
+}
+class Candidato {
+    constructor(nome, cpf, idade, email, estado, cep, descricao, competencia, senha) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.idade = idade;
+        this.email = email;
+        this.estado = estado;
+        this.cep = cep;
+        this.descricao = descricao;
+        this.competencia = competencia;
+        this.senha = senha;
+    }
 }

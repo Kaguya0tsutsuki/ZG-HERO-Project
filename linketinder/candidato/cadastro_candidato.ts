@@ -1,5 +1,3 @@
-import { Candidato } from "./candidato";
-
 const botaoSalvarCandidato = document.getElementById("salvar");
 botaoSalvarCandidato?.addEventListener("click", criarCandidato);
 
@@ -49,7 +47,7 @@ function criarCandidato(this: HTMLElement, ev: Event) {
 
   candidatos.push(candidato)
   alert("Candidato criado com sucesso!")
-  console.log(candidatos)
+  console.log(candidato)
 
   limparDadosCandidato()
 
@@ -203,4 +201,29 @@ function validarSenhaCandidato(){
     return false
   }
   return true
+}
+
+class Candidato{
+  nome: string
+  cpf: string
+  idade: string
+  email: string
+  estado: string
+  cep: string
+  descricao: string
+  competencia: any[]
+  senha: string
+
+  constructor(nome: string, cpf: string, idade: string, email: string, estado: string, cep: string, descricao: string, competencia: any[], senha: string){
+    this.nome = nome
+    this.cpf = cpf
+    this.idade = idade
+    this.email = email
+    this.estado = estado
+    this.cep = cep
+    this.descricao = descricao
+    this.competencia = competencia
+    this.senha = senha
+
+  }
 }

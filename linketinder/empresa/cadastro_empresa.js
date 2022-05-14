@@ -1,6 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const empresa_1 = require("./empresa");
 const botaoSalvarEmpresa = document.getElementById("salvar");
 botaoSalvarEmpresa === null || botaoSalvarEmpresa === void 0 ? void 0 : botaoSalvarEmpresa.addEventListener("click", criarEmpresa);
 const nomeEmpresa = document.getElementById("nome");
@@ -44,7 +42,7 @@ function criarEmpresa(ev) {
     else if (validarSenhaEmpresa() === false) {
         return;
     }
-    let empresa = new empresa_1.Empresa(nomeEmpresa.value, cnpjEmpresa.value, emailEmpresa.value, paisEmpresa.value, estadoEmpresa.value, cepEmpresa.value, descricaoEmpresa.value, [pythonEmpresa.checked, javaEmpresa.checked, groovyEmpresa.checked, cEmpresa.checked,
+    let empresa = new Empresa(nomeEmpresa.value, cnpjEmpresa.value, emailEmpresa.value, paisEmpresa.value, estadoEmpresa.value, cepEmpresa.value, descricaoEmpresa.value, [pythonEmpresa.checked, javaEmpresa.checked, groovyEmpresa.checked, cEmpresa.checked,
         jsEmpresa.checked], senhaEmpresa.value);
     empresas.push(empresa);
     alert("Empresa criada com sucesso!");
@@ -178,4 +176,17 @@ function limparDadosEmpresa() {
     jsEmpresa.checked = false;
     senhaEmpresa.value = "";
     confirmarSenhaEmpresa.value = "";
+}
+class Empresa {
+    constructor(nome, cnpj, email, pais, estado, cep, descricao, competencia, senha) {
+        this.nome = nome;
+        this.email = email;
+        this.estado = estado;
+        this.cep = cep;
+        this.descricao = descricao;
+        this.competencia = competencia;
+        this.senha = senha;
+        this.cnpj = cnpj;
+        this.pais = pais;
+    }
 }
