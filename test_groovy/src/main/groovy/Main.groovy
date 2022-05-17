@@ -1,212 +1,170 @@
+import groovy.sql.Sql
 
 class Main {
 
+
     static void main(String[] args) {
-        menu()
+        menuLogin()
+
     }
 
-    static menuOpcao(def opcao){
-        switch (opcao) {
+    static menuOpcaoLogin(def opcao){
+        switch (opcao){
             case "1":
+                menuCandidato()
+                break
+            case "2":
+                menuEmpresa()
+                break
+        }
+    }
+
+    static menuOpcaoCandidato(def opcao){
+        BD bd = new BD()
+
+        switch (opcao){
+            case "1":
+                print "Nome: "
+                def nomeCandidato = System.in.newReader().readLine()
+
+                print "Sobrenome: "
+                def sobrenomeCandidato = System.in.newReader().readLine()
+
+                print "Data de Nascimento: "
+                def nascimentoCandidato = System.in.newReader().readLine()
+
+                print "Email: "
+                def emailCandidato = System.in.newReader().readLine()
+
+                print "CPF: "
+                def cpfCandidato = System.in.newReader().readLine()
+
+                print "Pais: "
+                def paisCandidato = System.in.newReader().readLine()
+
+                print "CEP: "
+                def cepCandidato = System.in.newReader().readLine()
+
+                print "Descrição: "
+                def descricaoCandidato = System.in.newReader().readLine()
+
+                print "Senha: "
+                def senhaCandidato = System.in.newReader().readLine()
+
+
+                print("Para concluir o cadastro, adicione uma competencia!")
+                bd.printCompetenciaBD()
 
                 print "Nome: "
-                def nome = System.in.newReader().readLine()
-                print "CPF: "
-                def cpf = System.in.newReader().readLine()
+                def nomeCompetencia = System.in.newReader().readLine()
 
-                File file = new File('Candidato.txt')
+                bd.criarCandidatoBD(nomeCandidato, sobrenomeCandidato, nascimentoCandidato, emailCandidato, cpfCandidato, paisCandidato, cepCandidato, descricaoCandidato, senhaCandidato)
+                bd.criarCompetenciaBD(nomeCompetencia)
 
-                def line, i = 0
-                def list = []
-
-                file.withReader { reader ->
-                    while ((line = reader.readLine()) != null && (i != 8)) {
-                        list.add(line)
-                        if(list.size() == 8){
-                            if (cpf == list[1]){
-                                println "CPF já cadastrado!"
-                                for (cpf = System.in.newReader().readLine(); cpf == list[1]; cpf = System.in.newReader().readLine()) {
-                                    println "CPF já cadastrado!"
-                                }
-                            }
-                            i = 0
-                            list = []
-                        }else {
-                            i++
-                        }
-                    }
-                }
-
-                print "Idade: "
-                def idade = System.in.newReader().readLine()
-                print "Email: "
-                def email = System.in.newReader().readLine()
-                print "Estado: "
-                def estado = System.in.newReader().readLine()
-                print "CEP: "
-                def cep = System.in.newReader().readLine()
-                print "Descrição: "
-                def descricao = System.in.newReader().readLine()
-                print "Campetência: "
-                def competencia = System.in.newReader().readLine()
-
-                Candidato candidato = new Candidato(nome, cpf, idade, email, estado, cep, descricao, competencia)
-
-                criarCandidato(candidato)
-                println "Candidato Criado com Sucesso!\n"
-                menu()
+                println "Candidato criado com sucesso!\n"
 
                 break
 
             case "2":
-
-                print "Nome: "
-                def nome = System.in.newReader().readLine()
-                print "CNPJ: "
-                def cnpj = System.in.newReader().readLine()
-
-                File file = new File('Empresa.txt')
-
-                def line, i = 0
-                def list = []
-
-                file.withReader { reader ->
-                    while ((line = reader.readLine()) != null && (i != 8)) {
-                        list.add(line)
-                        if(list.size() == 8){
-                            if (cnpj == list[1]){
-                                println "CNPJ já cadastrado!"
-                                for (cnpj = System.in.newReader().readLine(); cnpj == list[1]; cnpj = System.in.newReader().readLine()) {
-                                    println "CNPJ já cadastrado!"
-                                }
-                            }
-                            i = 0
-                            list = []
-                        }else {
-                            i++
-                        }
-                    }
-                }
-
-                print "Email: "
-                def email = System.in.newReader().readLine()
-                print "País: "
-                def pais = System.in.newReader().readLine()
-                print "Estado: "
-                def estado = System.in.newReader().readLine()
-                print "CEP: "
-                def cep = System.in.newReader().readLine()
-                print "Descrição: "
-                def descricao = System.in.newReader().readLine()
-                print "Campetência: "
-                def competencia = System.in.newReader().readLine()
-
-                Empresa empresa = new Empresa(nome, cnpj, email, pais, estado, cep, descricao,competencia)
-
-                criarEmpresa(empresa)
-                println "Empresa Criada com Sucesso!\n"
-                menu()
-
+                bd.printCandidatoBD()
                 break
 
             case "3":
-                printCandidato()
-                menu()
                 break
 
             case "4":
-                printEmpresa()
-                menu()
                 break
 
             case "5":
-                System.exit(0)
+                break
+        }
+    }
+
+    static menuOpcaoEmpresa(def opcao){
+        BD bd = new BD()
+
+        switch (opcao){
+            case "1":
+                print "Nome: "
+                def nomeEmpresa = System.in.newReader().readLine()
+
+                print "CNPJ: "
+                def cnpjEmpresa = System.in.newReader().readLine()
+
+                print "Email: "
+                def emailEmpresa = System.in.newReader().readLine()
+
+                print "Descrição: "
+                def descricaoEmpresa = System.in.newReader().readLine()
+
+                print "Pais: "
+                def paisEmpresa = System.in.newReader().readLine()
+
+                print "CEP: "
+                def cepEmpresa = System.in.newReader().readLine()
+
+                print "Senha: "
+                def senhaEmpresa = System.in.newReader().readLine()
+
+
+                print("Para concluir o cadastro, crie uma vaga!")
+
+
+                print "Nome: "
+                def nomeVaga = System.in.newReader().readLine()
+
+                print "Descrição: "
+                def descricaoVaga = System.in.newReader().readLine()
+
+                print "Local: "
+                def localVaga = System.in.newReader().readLine()
+
+                bd.criarEmpresaBD(nomeEmpresa, cnpjEmpresa, emailEmpresa, descricaoEmpresa, paisEmpresa, cepEmpresa, senhaEmpresa)
+                bd.criarVagaBD(nomeVaga, descricaoVaga, localVaga)
+
+                print("Empresa criada com sucesso!")
+
                 break
 
-            default: println("opção invalida")
+            case "2":
+                bd.printEmpresaBD()
+                break
+
+            case "3":
+                bd.printCandidatoBD()
+
+                print("Escolha o ID do candidato q deseja excluir!")
+                def id = System.in.newReader().readLine()
+
+
+                break
+
+            case "4":
+                break
+
+            case "5":
+                break
         }
-    }
-
-    static criarCandidato(candidato){
-
-        def f = new File("Candidato.txt")
-        f.append(candidato.toString())
 
     }
 
-    static criarEmpresa(empresa){
+    static menuLogin(){
 
-        def f = new File("Empresa.txt")
-        f.append(empresa.toString())
-
-    }
-
-    static printCandidato(){
-
-        File file = new File('Candidato.txt')
-
-        def line, i = 0, y = 1
-        def list = []
-        def listTest = []
-
-        file.withReader { reader ->
-            while ((line = reader.readLine()) != null && (i != 8)) {
-                list.add(line)
-                listTest.add(line)
-                if(list.size() == 8){
-                    println "\nCandidato " + y + ":" + '\n' + "Nome: " + list[0] + '\n' +
-                            "CPF: " + list[1] + '\n' + "Idade: " + list[2] + '\n' +
-                            "Email: " + list[3] + '\n' + "Estado: " + list[4] + '\n' +
-                            "CEP: " + list[5] + '\n' + "Descrição: " + list[6] + '\n' +
-                            "Competencia: " + list[7] + '\n'
-                    i = 0
-                    y++
-                    list = []
-                }else {
-                    i++
-                }
+        print "Digite :\n" + "1 - Candidato.\n" + "2 - Empresa.\n" + "3 - Sair.\n"
+        def opcao = System.in.newReader().readLine()
+        if (opcao == '0' || opcao > '3'){
+            System.out.println("Opção Inválida!");
+            for(opcao = System.in.newReader().readLine(); opcao == '0' || opcao > '3'; opcao = System.in.newReader().readLine()) {
+                System.out.println("Opção Inválida!");
             }
         }
-        if (listTest == []){
-            println "Nenhum Candidato Encontrado!\n" + "Crie um Candidato\n"
-        }
+
+        menuOpcaoLogin(opcao)
     }
 
-    static printEmpresa(){
+    static menuCandidato(){
 
-        File file = new File('Empresa.txt')
-
-        def line, i = 0, y = 1
-        def list = []
-        def listTest = []
-
-        file.withReader { reader ->
-            while ((line = reader.readLine()) != null && (i != 8)) {
-                list.add(line)
-                listTest.add(line)
-                if(list.size() == 8){
-                    println "\nEmpresa " + y + ":" + '\n' + "Nome: " + list[0] + '\n' +
-                            "CNPJ: " + list[1] + '\n' + "Email: " + list[2] + '\n' +
-                            "CEP: " + list[3] + '\n' + "Estado: " + list[4] + '\n' +
-                            "País: " + list[5] + '\n' + "Descrição: " + list[6] + '\n' +
-                            "Competencia: " + list[7] + '\n'
-                    i = 0
-                    y++
-                    list = []
-                }else {
-                    i++
-                }
-            }
-
-        }
-        if (listTest == []) {
-            println "Nenhuma Empresa Encontrada!\n" + "Crie uma Empresa\n"
-        }
-    }
-
-    static menu(){
-
-        print "Digite :\n" + "1 - Criar Candidato.\n" + "2 - Criar Empresa.\n" + "3 - Imprimir Candidato.\n" + "4 - Imprimir Empresa.\n" + "5 - Sair.\n"
+        print "Digite :\n" + "1 - Criar Candidato.\n" + "2 - Imprimir Candidato.\n" + "3 - Excluir Candidato.\n" + "4 - Voltar.\n" + "5 - Sair.\n"
         def opcao = System.in.newReader().readLine()
         if (opcao == '0' || opcao > '5'){
             System.out.println("Opção Inválida!");
@@ -215,8 +173,21 @@ class Main {
             }
         }
 
-        menuOpcao(opcao)
+        menuOpcaoCandidato(opcao)
+    }
 
+    static menuEmpresa(){
+
+        print "Digite :\n" + "1 - Criar Empresa.\n" + "2 - Imprimir Empresa.\n" + "3 - Excluir Empresa.\n" + "4 - Voltar.\n" + "5 - Sair.\n"
+        def opcao = System.in.newReader().readLine()
+        if (opcao == '0' || opcao > '5'){
+            System.out.println("Opção Inválida!");
+            for(opcao = System.in.newReader().readLine(); opcao == '0' || opcao > '5'; opcao = System.in.newReader().readLine()) {
+                System.out.println("Opção Inválida!");
+            }
+        }
+
+        menuOpcaoEmpresa(opcao)
     }
 
 }
