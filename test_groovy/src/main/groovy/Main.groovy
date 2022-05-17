@@ -24,7 +24,7 @@ class Main {
 
         switch (opcao){
             case "1":
-                print "Nome: "
+                print "\nNome: "
                 def nomeCandidato = System.in.newReader().readLine()
 
                 print "Sobrenome: "
@@ -52,30 +52,43 @@ class Main {
                 def senhaCandidato = System.in.newReader().readLine()
 
 
-                print("Para concluir o cadastro, adicione uma competencia!")
-                bd.printCompetenciaBD()
-
-                print "Nome: "
-                def nomeCompetencia = System.in.newReader().readLine()
+//                print("Para concluir o cadastro, adicione uma competencia!")
+//                bd.printCompetenciaBD()
+//
+//                print "Nome: "
+//                def nomeCompetencia = System.in.newReader().readLine()
 
                 bd.criarCandidatoBD(nomeCandidato, sobrenomeCandidato, nascimentoCandidato, emailCandidato, cpfCandidato, paisCandidato, cepCandidato, descricaoCandidato, senhaCandidato)
-                bd.criarCompetenciaBD(nomeCompetencia)
+//                bd.criarCompetenciaBD(nomeCompetencia)
 
-                println "Candidato criado com sucesso!\n"
+                println "\nCandidato criado com sucesso!\n"
 
                 break
 
             case "2":
                 bd.printCandidatoBD()
+                menuCandidato()
                 break
 
             case "3":
+                bd.printCandidatoBD()
+
+                print("Escolha o ID do candidato q deseja excluir!")
+                def id = System.in.newReader().readLine()
+
+                bd.excluirCandidatoBD(id)
+                bd.printCandidatoBD()
+
+                print("\nCandidato excluido com sucesso!\n")
+                menuCandidato()
                 break
 
             case "4":
+                menuLogin()
                 break
 
             case "5":
+                System.exit(0)
                 break
         }
     }
@@ -85,7 +98,7 @@ class Main {
 
         switch (opcao){
             case "1":
-                print "Nome: "
+                print "\nNome: "
                 def nomeEmpresa = System.in.newReader().readLine()
 
                 print "CNPJ: "
@@ -107,42 +120,49 @@ class Main {
                 def senhaEmpresa = System.in.newReader().readLine()
 
 
-                print("Para concluir o cadastro, crie uma vaga!")
-
-
-                print "Nome: "
-                def nomeVaga = System.in.newReader().readLine()
-
-                print "Descrição: "
-                def descricaoVaga = System.in.newReader().readLine()
-
-                print "Local: "
-                def localVaga = System.in.newReader().readLine()
+//                print("Para concluir o cadastro, crie uma vaga!")
+//
+//
+//                print "Nome: "
+//                def nomeVaga = System.in.newReader().readLine()
+//
+//                print "Descrição: "
+//                def descricaoVaga = System.in.newReader().readLine()
+//
+//                print "Local: "
+//                def localVaga = System.in.newReader().readLine()
 
                 bd.criarEmpresaBD(nomeEmpresa, cnpjEmpresa, emailEmpresa, descricaoEmpresa, paisEmpresa, cepEmpresa, senhaEmpresa)
-                bd.criarVagaBD(nomeVaga, descricaoVaga, localVaga)
+//                bd.criarVagaBD(nomeVaga, descricaoVaga, localVaga)
 
-                print("Empresa criada com sucesso!")
+                print("\nEmpresa criada com sucesso!")
 
                 break
 
             case "2":
                 bd.printEmpresaBD()
+                menuEmpresa()
                 break
 
             case "3":
-                bd.printCandidatoBD()
+                bd.printEmpresaBD()
 
-                print("Escolha o ID do candidato q deseja excluir!")
+                print("Escolha o ID da empresa q deseja excluir!")
                 def id = System.in.newReader().readLine()
 
+                bd.excluirEmpresaBD(id)
+                bd.printEmpresaBD()
 
+                print("Empresa excluida com sucesso!\n")
+                menuEmpresa()
                 break
 
             case "4":
+                menuLogin()
                 break
 
             case "5":
+                System.exit(0)
                 break
         }
 
@@ -150,7 +170,7 @@ class Main {
 
     static menuLogin(){
 
-        print "Digite :\n" + "1 - Candidato.\n" + "2 - Empresa.\n" + "3 - Sair.\n"
+        print "\nDigite :\n" + "1 - Candidato.\n" + "2 - Empresa.\n" + "3 - Sair.\n"
         def opcao = System.in.newReader().readLine()
         if (opcao == '0' || opcao > '3'){
             System.out.println("Opção Inválida!");
@@ -164,7 +184,7 @@ class Main {
 
     static menuCandidato(){
 
-        print "Digite :\n" + "1 - Criar Candidato.\n" + "2 - Imprimir Candidato.\n" + "3 - Excluir Candidato.\n" + "4 - Voltar.\n" + "5 - Sair.\n"
+        print "\nDigite :\n" + "1 - Criar Candidato.\n" + "2 - Imprimir Candidato.\n" + "3 - Excluir Candidato.\n" + "4 - Voltar.\n" + "5 - Sair.\n"
         def opcao = System.in.newReader().readLine()
         if (opcao == '0' || opcao > '5'){
             System.out.println("Opção Inválida!");
@@ -178,7 +198,7 @@ class Main {
 
     static menuEmpresa(){
 
-        print "Digite :\n" + "1 - Criar Empresa.\n" + "2 - Imprimir Empresa.\n" + "3 - Excluir Empresa.\n" + "4 - Voltar.\n" + "5 - Sair.\n"
+        print "\nDigite :\n" + "1 - Criar Empresa.\n" + "2 - Imprimir Empresa.\n" + "3 - Excluir Empresa.\n" + "4 - Voltar.\n" + "5 - Sair.\n"
         def opcao = System.in.newReader().readLine()
         if (opcao == '0' || opcao > '5'){
             System.out.println("Opção Inválida!");

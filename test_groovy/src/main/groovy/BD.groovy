@@ -28,7 +28,7 @@ class BD {
 
     public criarCandidatoBD(def nome, def sobrenome, def nascimento, def email, def cpf, def pais, def cep, def descricao, def senha){
 
-        def script = "(INSERT INTO candidato (nome, sobrenome, data_nascimento, email, cpf, pais, cep, descricao, senha) " +
+        def script = "INSERT INTO candidato (nome, sobrenome, data_nascimento, email, cpf, pais, cep, descricao, senha) " +
                 "VALUES (" + "'" + nome + "'" + ", " + "'" + sobrenome + "'" + ", " + "'" + nascimento + "'" + ", " + "'" +
                 email + "'" + ", " + "'" + cpf + "'" + ", " + "'" + pais + "'" + ", " + "'" + cep + "'" + ", " + "'" +
                 descricao + "'" + ", " + "'" + senha + "'" + ");"
@@ -77,8 +77,12 @@ class BD {
         connectedList("SELECT * FROM vaga;")
     }
 
-    public excluirCandidato(def id){
+    public excluirCandidatoBD(def id){
+        connected("DELETE FROM candidato WHERE id = "+id+";")
+    }
 
+    public excluirEmpresaBD(def id){
+        connected("DELETE FROM empresa WHERE id = "+id+";")
     }
 
 }
