@@ -2,8 +2,6 @@ import groovy.sql.Sql
 
 class BD {
 
-
-
     public connected(def script) {
 
         def db = [url: 'jdbc:postgresql://localhost/linketinder', user: 'kaguya', password: 'Antonio0202@', driver: 'org.postgresql.Driver']
@@ -38,24 +36,24 @@ class BD {
 
     public criarEmpresaBD(def nome, def cnpj, def email, def descricao, def pais, def cep, def senha){
 
-        def script = "INSERT INTO candidato (nome, sobrenome, data_nascimento, email, cpf, pais, cep, descricao, senha) " +
+        def script = "INSERT INTO empresa (nome, cnpj, email, descricao, pais, cep, senha) " +
                 "VALUES (" + "'" + nome + "'" + ", " + "'" + cnpj + "'" + ", " + "'" + email + "'" + ", " + "'" +
                 descricao + "'" + ", " + "'" + pais + "'" + ", " + "'" + cep + "'" + ", " + "'" + senha + "'" + ");"
 
         connected(script)
     }
 
-    public criarVagaBD(def nome, def descricao, def local){
+    public criarVagaBD(def nome, def descricao, def local, def id){
 
-        def script = "INSERT INTO candidato (nome, sobrenome, data_nascimento, email, cpf, pais, cep, descricao, senha) " +
-                "VALUES (" + "'" + nome + "'" + ", " + "'" + descricao + "'" + ", " + "'" + local + "'" + ");"
+        def script = "INSERT INTO vaga (nome, descricao, local, id) " +
+                "VALUES (" + "'" + nome + "'" + ", " + "'" + descricao + "'" + ", " + "'" + local + "'" + ", " + "'" + id + "'" + ");"
 
         connected(script)
     }
 
     public criarCompetenciaBD(def nome){
 
-        def script = "INSERT INTO competencia (nome) " +
+        def script = "INSERT INTO competencia " +
                 "VALUES (" + "'" + nome + "'" + ");"
 
         connected(script)
@@ -83,6 +81,11 @@ class BD {
 
     public excluirEmpresaBD(def id){
         connected("DELETE FROM empresa WHERE id = "+id+";")
+    }
+
+    public excluirVagaBD(id){
+        connected("DELETE FROM vaga_competencia WHERE id_vaga = "+id+";")
+        connected("DELETE FROM vaga WHERE id = "+id+";")
     }
 
 }
