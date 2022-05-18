@@ -135,6 +135,10 @@ class Candidato {
 
         while (true) {
 
+            if(idCompetencia == "0"){
+                break
+            }
+
             if (bd.connectedList("SELECT * FROM competencia WHERE id = " + idCompetencia) == '' || idCompetencia == '') {
                 print("\nO id digitado não atende aos requisitos!")
                 print("\nDigite um id valido!")
@@ -145,9 +149,7 @@ class Candidato {
             print "ID: "
             idCompetencia = System.in.newReader().readLine()
 
-            if(idCompetencia == 0){
-                false
-            }
+
 
         }
 

@@ -1,39 +1,9 @@
-import groovy.sql.Sql
-
 class Main {
 
 
     static void main(String[] args) {
         menuLogin()
 
-//        BD bd = new BD()
-//        def c = "2"
-//        if(bd.connectedList("select * from candidato WHERE id = "+c+";") == null){
-//            print true
-//        }else {
-//            print false
-//        }
-
-//        def a = "22/01/2001"
-//        if(a ==~ /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/){
-//            print(true)
-//        }else {
-//            print(false)
-//        }
-
-//        bd.excluirVagaBD(1)
-
-//        bd.connectedList("SELECT * FROM vaga WHERE id = 10;")
-
-//        def db = [url: 'jdbc:postgresql://localhost/linketinder', user: 'kaguya', password: 'Antonio0202@', driver: 'org.postgresql.Driver']
-//        def sql = Sql.newInstance(db.url, db.user, db.password, db.driver)
-//
-//        sql.eachRow("SELECT * FROM candidato WHERE nome = 'Catarina'") { row ->
-//            println "$row.id"
-//        }
-//        def nomeCandidato = "Islaine"
-//
-//        bd.connectedID("SELECT * FROM competencia WHERE nome = '"+nomeCandidato+"'")
     }
 
     static menuOpcaoLogin(def opcao){
