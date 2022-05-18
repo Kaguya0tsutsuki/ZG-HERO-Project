@@ -12,16 +12,35 @@ class BD {
         sql.close()
     }
 
-    public connectedList(def x) {
+    public connectedList(def script) {
 
         def db = [url: 'jdbc:postgresql://localhost/linketinder', user: 'kaguya', password: 'Antonio0202@', driver: 'org.postgresql.Driver']
         def sql = Sql.newInstance(db.url, db.user, db.password, db.driver)
+        def dado = ""
 
-        sql.eachRow(x) { row ->
+        sql.eachRow(script) { row ->
             println "$row"
+            dado = "$row"
         }
 
         sql.close()
+
+        return dado
+    }
+
+    public connectedID(def script) {
+
+        def db = [url: 'jdbc:postgresql://localhost/linketinder', user: 'kaguya', password: 'Antonio0202@', driver: 'org.postgresql.Driver']
+        def sql = Sql.newInstance(db.url, db.user, db.password, db.driver)
+        def dado
+
+        sql.eachRow(script) { row ->
+            dado = "$row.id"
+        }
+
+        sql.close()
+
+        return dado
     }
 
     public criarCandidatoBD(def nome, def sobrenome, def nascimento, def email, def cpf, def pais, def cep, def descricao, def senha){
@@ -45,16 +64,22 @@ class BD {
 
     public criarVagaBD(def nome, def descricao, def local, def id){
 
-        def script = "INSERT INTO vaga (nome, descricao, local, id) " +
-                "VALUES (" + "'" + nome + "'" + ", " + "'" + descricao + "'" + ", " + "'" + local + "'" + ", " + "'" + id + "'" + ");"
+        def script = "INSERT INTO vaga (nome, descricao, local, id_empresa) " +
+                "VALUES (" + "'" + nome + "'" + ", " + "'" + descricao + "'" + ", " + "'" + local + "'" + ", " + id + ");"
 
         connected(script)
     }
 
     public criarCompetenciaBD(def nome){
 
-        def script = "INSERT INTO competencia " +
-                "VALUES (" + "'" + nome + "'" + ");"
+        def script = "INSERT INTO competencia (nome) VALUES (" + "'" + nome + "'" + ");"
+
+        connected(script)
+    }
+
+    public criarCandidatoCompetencia(def idcandidato, def idcompetencia){
+
+        def script = "INSERT INTO candidato_competencia(id_candidato, id_competencia) VALUES (" + idcandidato + ", " + idcompetencia + ")"
 
         connected(script)
     }
@@ -83,9 +108,12 @@ class BD {
         connected("DELETE FROM empresa WHERE id = "+id+";")
     }
 
-    public excluirVagaBD(id){
-        connected("DELETE FROM vaga_competencia WHERE id_vaga = "+id+";")
+    public excluirVagaBD(def id){
         connected("DELETE FROM vaga WHERE id = "+id+";")
+    }
+
+    public excluirCompetenciaBD(def id){
+        connected("DELETE FROM competencia WHERE id = "+id+";")
     }
 
 }

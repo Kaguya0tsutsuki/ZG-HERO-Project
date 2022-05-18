@@ -30,7 +30,7 @@ CREATE TABLE vaga(
     descricao VARCHAR(100) NOT NULL,
     local VARCHAR(45) NOT NULL,
     id_empresa INT NOT NULL,
-	FOREIGN KEY (id_empresa) REFERENCES empresa (id)
+	FOREIGN KEY (id_empresa) REFERENCES empresa (id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS public.competencia(
@@ -42,16 +42,16 @@ CREATE TABLE IF NOT EXISTS public.vaga_competencia(
     id SERIAL PRIMARY KEY,
     id_competencia INT NOT NULL,
     id_vaga INT NOT NULL,
-	FOREIGN KEY (id_vaga) REFERENCES vaga (id),
-	FOREIGN KEY (id_competencia) REFERENCES competencia (id)
+	FOREIGN KEY (id_vaga) REFERENCES vaga (id) ON DELETE CASCADE, 
+	FOREIGN KEY (id_competencia) REFERENCES competencia (id) ON DELETE CASCADE
 );
 
 CREATE TABLE candidato_competencia(
     id SERIAL PRIMARY KEY,
     id_candidato INT NOT NULL,
     id_competencia INT NOT NULL,
-	FOREIGN KEY (id_candidato) REFERENCES candidato (id),
-	FOREIGN KEY (id_competencia) REFERENCES competencia (id)
+	FOREIGN KEY (id_candidato) REFERENCES candidato (id) ON DELETE CASCADE,
+	FOREIGN KEY (id_competencia) REFERENCES competencia (id) ON DELETE CASCADE
 );
 
 -- INSERÇÃO NAS TABELAS

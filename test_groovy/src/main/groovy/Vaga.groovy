@@ -47,11 +47,11 @@ class Vaga {
         print "Digite o ID da empresa que atende a vaga: "
         def empresaVaga = System.in.newReader().readLine()
 
-        if(bd.connectedList("SELECT * FROM empresa WHERE id = "+empresaVaga+";") == null || empresaVaga == '') {
+        if(bd.connectedList("SELECT * FROM empresa WHERE id = "+empresaVaga+";") == '' || empresaVaga == '') {
             print("\nO id digitado não atende aos requisitos!")
             print("\nDigite um id valido!")
 
-            for (empresaVaga = System.in.newReader().readLine(); bd.connectedList("SELECT * FROM empresa WHERE id = "+empresaVaga+";") == null || empresaVaga == ''; empresaVaga = System.in.newReader().readLine()) {
+            for (empresaVaga = System.in.newReader().readLine(); bd.connectedList("SELECT * FROM empresa WHERE id = "+empresaVaga+";") == '' || empresaVaga == ''; empresaVaga = System.in.newReader().readLine()) {
                 print("\nO id digitado não atende aos requisitos!")
                 print("\nDigite um id valido!")
             }
@@ -76,11 +76,11 @@ class Vaga {
         print "ID: "
         def idVaga = System.in.newReader().readLine()
 
-        if(idVaga == '' || bd.connectedList("SELECT * FROM empresa WHERE id = "+idVaga+";") == null) {
+        if(bd.connectedList("SELECT * FROM vaga WHERE id = "+idVaga) == '' || idVaga == '') {
             print("\nO id digitado não atende aos requisitos!")
             print("\nDigite um id valido!")
 
-            for (idVaga = System.in.newReader().readLine(); idVaga == '' || bd.connectedList("SELECT * FROM empresa WHERE id = "+idVaga+";") == null; idVaga = System.in.newReader().readLine()) {
+            for (idVaga = System.in.newReader().readLine(); bd.connectedList("SELECT * FROM vaga WHERE id = "+idVaga) == '' || idVaga == ''; idVaga = System.in.newReader().readLine()) {
                 print("\nO id digitado não atende aos requisitos!")
                 print("\nDigite um id valido!")
             }
