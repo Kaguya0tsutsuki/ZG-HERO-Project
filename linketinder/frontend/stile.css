@@ -1,0 +1,16 @@
+.container {
+  max-width: 960px;
+}
+
+.fonte {
+  font-family: 'Lucida Handwriting', 'Times New Roman', Times, serif;
+}
+
+.centralizar {
+  display: block;
+  margin: 0 auto;
+}
+
+.grad {
+  background-image: linear-gradient(lightblue, white, white);
+}
