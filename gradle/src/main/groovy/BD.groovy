@@ -1,6 +1,17 @@
 import groovy.sql.Sql
 
+import java.sql.Connection
+import java.sql.ResultSet
+
 class BD {
+
+    Connection connection
+
+    public BD(){
+        def connectionFactory = new ConnectionFactory()
+        this.connection = connectionFactory.getConnection('postgre', '', '', '')
+
+    }
 
     public connected(def script) {
 
@@ -8,6 +19,12 @@ class BD {
         def sql = Sql.newInstance(db.url, db.user, db.password, db.driver)
 
         sql.execute(script)
+
+        Connection postgreConnection = sql.getConnection()
+
+        def estado = sql.getConnection().prepareStatement(script)
+
+        ResultSet resultado = estado.executeQuery()
 
         sql.close()
     }
